@@ -1,0 +1,111 @@
+.video-page {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .video-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .video-player {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .video-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .video-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+  }
+  
+  .channel-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .channel-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .channel-name {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .channel-subscribers {
+    font-size: 0.85rem;
+    color: gray;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .like-button,
+  .dislike-button,
+  .subscribe-button,
+  .unsubscribe-button {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  
+  .like-button {
+    background-color: #f1f1f1;
+  }
+  
+  .dislike-button {
+    background-color: #f1f1f1;
+  }
+  
+  .subscribe-button {
+    background-color: rgb(216, 56, 56);
+    color: white;
+  }
+  
+  .unsubscribe-button {
+    background-color: gray;
+    color: white;
+  }
+  
+  .video-description {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-size: 0.95rem;
+  }
+  .like-button, .dislike-button, .subscribe-button, .unsubscribe-button {
+    border: none;
+    padding: 10px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: 0.3s;
+  }
+  
+  .like-button { background: #f0f0f0; color: black; }
+  .like-button.liked { background: #b64e6d; color: white; }
+  
+  .dislike-button { background: #f0f0f0; color: black; }
+  .dislike-button.disliked { background: #FF0000; color: white; }
+  
+  .subscribe-button { background: red; color: white; }
+  .unsubscribe-button { background: gray; color: white; }
+  

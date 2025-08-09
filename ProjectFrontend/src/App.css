@@ -1,0 +1,139 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+
+
+.video-page-container {
+  display: flex;
+  justify-content: center;
+   align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+}
+
+
+.video-container {
+  max-width: 700px;
+  flex: 2;
+}
+
+
+.video-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+
+.video-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+
+.subscribe-btn {
+  background-color: red;
+  color: white;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.subscribe-btn:hover {
+  background-color: darkred;
+}
+
+
+.like-dislike-container {
+  display: flex;
+  gap: 25px;
+}
+.like-btn, .dislike-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+.comment-box {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #797777;
+}
+.comment-container {
+  max-width: 700px;
+  padding: 20px;
+}
+
+
+.app-container {
+  display: flex;
+}
+
+
+.sidebar {
+  width: 250px; 
+  height: 100vh;
+  background: #e4e0e2;
+  color: #0e0a0a;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+
+.main-content {
+  margin-left: 250px; 
+  flex: 1;
+  padding: 20px;
+}

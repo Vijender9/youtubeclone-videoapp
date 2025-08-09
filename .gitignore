@@ -1,0 +1,15 @@
+# Ignore node_modules for both frontend & backend
+ProjectBackend/node_modules/
+ProjectFrontend/node_modules/
+
+# Ignore build files
+ProjectFrontend/dist/
+ProjectBackend/build/
+
+# Ignore environment variables
+ProjectFrontend/.env
+ProjectBackend/.env
+
+# Logs & cache
+*.log
+.cache/

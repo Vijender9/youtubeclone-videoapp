@@ -1,0 +1,79 @@
+.sidebar {
+  width: 250px;
+  background: #121212; /* Darker background for better contrast */
+  color: #ffffff; /* White text for clarity */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  position: fixed;
+  border-right: 2px solid #2c2c2c;
+}
+
+/* Profile Section */
+.profile-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ffcc00; /* Gold border for visibility */
+  margin-bottom: 5px;
+}
+
+/* Upload Label */
+.upload-label {
+  font-size: 24px;
+  color: #ff3300; /* Gold color for better visibility */
+  cursor: pointer;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+/* Sidebar Links */
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.sidebar-links li {
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-links a {
+  color: #3117c2; /* Light grey for better readability */
+  text-decoration: none;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.sidebar-links a:hover {
+  color: #ffcc00; /* Gold hover effect */
+}
+
+/* Logout Button */
+.logout-btn {
+  margin-top: auto;
+  width: 90%;
+  background: #ff4d4d; /* Bright red for visibility */
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.logout-btn:hover {
+  background: #cc0000;
+}

@@ -1,0 +1,5 @@
+those files which we dont want to push on git like sensitive files
+//git ignore generator
+copy and paste here
+
+.env
