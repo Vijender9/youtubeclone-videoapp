@@ -45,10 +45,6 @@ const uploadVideo= asyncHandler( async(req,res)=> {
       .replace(".mp4", ".jpg");
 
 
-// // Get thumbnail URL (either from eager transformation or fallback to video URL)
-// const thumbnailURL = cloudinaryResponse.eager?.[0]?.secure_url;
-
-//const thumbnailURL = cloudinaryResponse.eager[0].secure_url;
 console.log("thumbnail:",thumbnailUrl )
   // ✅ Get video duration from Cloudinary
   const videoDuration = cloudinaryResponse.duration || 0; // Default to 0 if missing

@@ -6,7 +6,7 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken"
 import mongoose from "mongoose";
 
-//we are going to this work many times so here we can put it in method
+
 
 const generateAccessAndRefreshToken = async (userId) => {
   try {
@@ -15,9 +15,7 @@ const generateAccessAndRefreshToken = async (userId) => {
     const refreshToken = user.generateRefreshToken()
 
     user.refreshToken = refreshToken// add value in object 
-    await user.save({ validateBeforeSave: false })//when we are trying to save then mongo's model gets kick in
-    // e.g password is ging to kick in ->when we save we need password to so in that situation we passed this parameter validate
-    // bcoz by one filed save so other
+    await user.save({ validateBeforeSave: false })
 
     return { accessToken, refreshToken }
   } catch (error) {
@@ -30,27 +28,13 @@ const generateAccessAndRefreshToken = async (userId) => {
 
 
 const registerUser = asyncHandler(async (req, res) => {
-  //to register the user->
-  //get user detail from front end
-  //validation -not empty
-  //check if user already exists:username,email
-  //check for images ,check for avatar
+  
 
-  //upload them to claudinary,avatar
-  //create user object-create entry in db
-  //remove password and refresh token field from response
-  // check for user creation  successful or not
-  // return response
-
-  // user detail from front end i guess
+  
   const { fullname, email, username, password } = req.body
-  //   console.log("email:",email);
+  
   console.log(" request body data:", req.body);
-  //   if(fullname===""){
-  //     throw new ApiError(400,"fullname is required")
-  //   }
-  //advanced code
-  //validation
+ 
   if (
     [fullname, email, username, password].some((field) =>
       field?.trim() === "")
@@ -58,7 +42,7 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new ApiError(400, "All fields are required");
   }
 
-  //user already exist or not
+ 
   const exitedUser = await User.findOne({
     $or: [{ username }, { email }]
   })
@@ -71,8 +55,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   const avatarLocalPath = req.files?.avatar[0]?.path;
   console.log(req.files);
-  //  const coverImageLocalPath=req.files?.coverImage[0]?.path;
-  // classic way to write this one
+  
 
   let coverImageLocalPath;
   if (req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0) {
@@ -109,8 +92,7 @@ const registerUser = asyncHandler(async (req, res) => {
   })
 
   // removal of password and refreshToken
-  //   console.log("before find id" )
-  //   console.log(" after find id ",createdUser._id);
+  
   const createdUser = await User.findById(user._id).select(
 
     "-password -refreshToken"// those things which we dont want 
@@ -130,20 +112,12 @@ const registerUser = asyncHandler(async (req, res) => {
 })
 
 const loginUser = asyncHandler(async (req, res) => {
-  // req body-> data
-  // username or email based
-  //find the user
-  // password check
-  // access and refresh token generate
-  //send cookie
 
-
-  //take data from request body
   const { email, username, password } = req.body
   if (!(username || email)) {
     throw new ApiError(400, "username or email is required")
   }
-  const user = await User.findOne({ // find email or username or depend whatever you want 
+  const user = await User.findOne({  
     $or: [{ username }, { email }]
   }).select("+password");
 
@@ -159,22 +133,18 @@ const loginUser = asyncHandler(async (req, res) => {
   if (!isPasswordValid) {
     throw new ApiError(401, "Password doest not match")
   }
-  // if password match generate access and refresh token
-  // called methods for this one 
+  
 
   const { accessToken, refreshToken } = await generateAccessAndRefreshToken(user._id)
   console.log("generated tokens:",accessToken,refreshToken);
-  //optional steps->
+  
   const loggedInUser = await User.findById(user._id).select("-password -refreshToken")
 
 
-  // send cookies
-  // what info we need to send to user
-
+ 
   const options = {//it is object
 
-    // by deafult cookies can be modified anyone on frontend 
-    // when we do httpOnly and secure then its only modified by server
+    
 
     httpOnly: true,
 
@@ -335,13 +305,7 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
   if (!coverImageLocalPath) {
     throw new ApiError(400, "coverImage file is missing")
   }
-  // const deleteFromCloudinary = async (publicId) => {
-  //   try {
-  //     await cloudinary.uploader.destroy(publicId);
-  //   } catch (error) {
-  //     console.error("Error deleting old image from Cloudinary:", error);
-  //   }
-  // };
+ 
   const coverImage = await uploadOnCloudinary(coverImageLocalPath)
   if (!coverImage.url) {
     throw new ApiError(400, "Error while uploading on coverImage")
@@ -362,41 +326,7 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
       new ApiResponse(200, user, "coverImage is updated successfully")
     )
 })
-// const updateUserAvatar = asyncHandler(async (req, res) => {
-//   const avatarLocalPath = req.file?.path;
-//   if (!avatarLocalPath) {
-//     throw new ApiError(400, "Avatar file is missing");
-//   }
 
-//   // Find the user to get the old avatar URL
-//   const user = await User.findById(req.user?._id);
-//   if (!user) {
-//     throw new ApiError(404, "User not found");
-//   }
-
-//   // TODO: Delete old image from Cloudinary if exists
-//   if (user.avatar) {
-//     const publicId = user.avatar.split("/").pop().split(".")[0]; // Extract public_id from URL
-//     await deleteFromCloudinary(publicId);
-//   }
-
-//   // Upload new avatar
-//   const avatar = await uploadOnCloudinary(avatarLocalPath);
-//   if (!avatar.url) {
-//     throw new ApiError(400, "Error while uploading avatar");
-//   }
-
-//   // Update user with new avatar
-//   const updatedUser = await User.findByIdAndUpdate(
-//     req.user?._id,
-//     { $set: { avatar: avatar.url } },
-//     { new: true }
-//   ).select("-password");
-
-//   return res.status(200).json(new ApiResponse(200, updatedUser, "Avatar is updated successfully"));
-// });
-
-// Function to delete old images from Cloudinary
 
 
 

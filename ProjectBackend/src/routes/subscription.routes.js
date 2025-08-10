@@ -1,6 +1,6 @@
 import express from "express"
 import { verifyJWT } from "../middlewares/auth.middleware.js";
-import { Subscribe,unSubscribe,getSubscribersCount, subscribedToCount,isSubscribed } from "../controllers/Subscription.controller.js"
+import { Subscribe,unSubscribe,getSubscribersCount, subscribedToCount,isSubscribed } from "../controllers/subscription.controller.js"
 
 const router=express.Router();
 

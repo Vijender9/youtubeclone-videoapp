@@ -1,4 +1,4 @@
-//   require('dotenv').config({path:'./env'}) : code ki consistency ko khrab krr deta hai
+
 import dotenv from "dotenv"
 import mongoose from "mongoose";
 import { app } from "./app.js";
@@ -27,8 +27,6 @@ connectDB()
 
 
 
-// import express from "express";
-// const app=express();
 
 
 
@@ -36,24 +34,3 @@ connectDB()
 
 
 
-
-// function connectDB(){}
-//iffy somethin
-
-// ;(async()=>{
-//     try{
-//       await moongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
-//       app.on("error",()=>{
-//         console.log("ERROR",error);
-//         throw error
-//       })
-//       app.listen(process.env.PORT,()=>{
-//         console.log(`App is listening on port${process.env.PORT}`)
-//     })
-//     }
-    
-//     catch(error){
-//        console.error("Error:",error)
-//        throw err
-//     }
-// })()

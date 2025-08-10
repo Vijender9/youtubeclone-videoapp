@@ -6,45 +6,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 
 
 
-// const Subscribe= asyncHandler(async(req,res)=>{
-//     const {subscribedTo}=req.params;
-//     const subscriber=req.user.id;
-//     console.log("req.id:",req.user.id)
-//      console.log("req.params:",req.params);
-//      console.log("subscribedTo:", subscribedTo);
-//         // 
-//     const userTosubscribe =await User.findOne({ 
-//         username:subscribedTo});
-//         console.log("username is :",userTosubscribe)
-     
-//     if(!userTosubscribe){
-//         throw new ApiError(404,"User not found for subscribe");
-//     }
 
-
-
-
-//     if(subscriber === userTosubscribe._id.toString()){
-//         return res.status(400)
-//         .json({ message:"You can not subscribe to yourself"});
-//     }
-//     const alreadySubscribed=await Subscription.findOne({subscriber,subscribedTo:userTosubscribe._id});
-//     console.log("check for already subscribed:",alreadySubscribed);
-//     if(alreadySubscribed){
-//         return res.status(400).
-//         json({message:" Already subscribed this channel"})
-//     }
-
-//     const newSubscription= new Subscription({subscriber,subscribedTo:userTosubscribe._id});
-//     await newSubscription.save();
-//     console.log("new subs is :",newSubscription)
-//     const response = new ApiResponse(200, "Successfully subscribed");
-//     return res.status(200).json(response);
-// // console.log("Backend Response:", response);
-
-//     // return res.status(200)
-//     // .json(new ApiResponse(200,"Successfully subscribed"));
-// })
 const Subscribe = asyncHandler(async (req, res) => {
     const { subscribedTo } = req.params;
     const subscriber = req.user.id;
@@ -81,28 +43,7 @@ const Subscribe = asyncHandler(async (req, res) => {
     return res.status(200).json({ message: "Successfully subscribed" });
 });
 
-// const unSubscribe =asyncHandler(async(req,res)=>{
-//     const {subscribedTo}=req.params;
-//     const subscriber=req.user.id;
-//     // console.log("req.id:",req.user.id)
-//     // console.log("req.params:",req.params);
 
-//     const userToUnsubscribe =await User.findOne({username:subscribedTo});
-//     // console.log("unsubscribe to :",userToUnsubscribe)
-//     if (!userToUnsubscribe) {
-//         return res.status(404).json({ message: "User not found to unsubscribe" });
-//     }
-
-//     const deletedSubscription=await Subscription.findOneAndDelete({subscriber,subscribedTo:  userToUnsubscribe._id});
-//     // console.log(" subscription deleted is:",deletedSubscription);
-//     if(!deletedSubscription){
-//         return res.status(404).json({ messsage:"Subscription not found"});
-
-//     }
-//     return res.status(200)
-//     .json({message:"Successfully unsubscribed"})
-
-// })
 const unSubscribe = asyncHandler(async (req, res) => {
     const { subscribedTo } = req.params;
     const subscriber = req.user.id;
