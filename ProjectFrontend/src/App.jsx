@@ -10,7 +10,7 @@ import Upload from "./components/Upload";
 import Sidebar from "./components/Sidebar";
 import MyUploads from "./components/MyUploads";
 import WatchHistory from "./components/WatchHistory";
-import { API_BASE_URL } from "./config";
+import { API_BASE_URL } from "./config.js";
 
 import "./App.css";
 
